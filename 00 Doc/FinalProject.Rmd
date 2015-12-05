@@ -23,8 +23,9 @@ output: html_document
 
 
 #### Folders Needed
-#####00 Doc: Holds the .Rmd and .html files containing these instructions and project output and also holds RPROFILE to load all required packages.
+#####00 Doc: Holds the .Rmd and .html files containing these instructions and project output and also holds RPROFILE to load all required packages. Also contains the .pngs of the tableau visualizations for the .Rmd.
 #####01 Data: Generates the ETL code to create the table in Oracle. Gathers the data from the database for and puts it into data frames.
+#####03. Tableau Workbooks: Contains the .twbx file that has the tableau workbook
 #####04 Shiny: Contains the server.R and ui.R files for the shiny application. Also has our www subfolder that holds a bootsrap.css file that create the style of our app.
 
 #### Data Description
@@ -41,6 +42,6 @@ output: html_document
 
 
 ```{r warning = FALSE}
-source("../00 Doc/Rprofile.R", echo = TRUE)
-source("../01 Data/Death_dataframes.R", echo = TRUE)
+#source("../00 Doc/Rprofile.R", echo = TRUE)
+#source("../01 Data/Death_dataframes.R", echo = TRUE)
 ```{r}
