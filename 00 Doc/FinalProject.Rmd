@@ -1,0 +1,46 @@
+---
+title: "Final Project Knit"
+author: "Nathan Riojas, Ryan Billa, Corey Monreal-Jackson"
+date: "December 8, 2015"
+output: html_document
+---
+
+#### Steps used to create this project
+#####1. Using GitHub, create a Repo
+#####2. Clone the Repository into the Data Visualization Folder (Or the folder you wish)
+#####3. Create R Studio Folders for all the project development (folder descriptions below)
+#####4. Use KnitR to to build an HTML to reproduce the project
+#####4. Find some CSVs that can be blended and/or joined to show interesting data trends
+#####5. Modify the R_ETL.R given and run the code to get the code to develop a SQL table
+#####6. Using Oracle SQL Developer, paste the code output from the R_ETL.R script to create a table
+#####7. After the table is created, import the data from the CSV reformattted file to the table
+#####9. Using R and SQL, recreate the three required visualization plots that were made in tableau
+#####10. Modify the R_ETL.R given and run the code to get the code to develop a SQL table
+#####11. Using Oracle SQL Developer, paste the code output from the R_ETL.R script to create a table
+#####12. After the table is created, import the data from the CSV reformattted file to the table
+#####13. Use R/SQL, Shiny and tableau to demonstrate our knowledge of the 5 different kinds of tables in Cannata's methodology presentation. 
+
+
+
+#### Folders Needed
+#####00 Doc: Holds the .Rmd and .html files containing these instructions and project output and also holds RPROFILE to load all required packages.
+#####01 Data: Generates the ETL code to create the table in Oracle. Gathers the data from the database for and puts it into data frames.
+#####04 Shiny: Contains the server.R and ui.R files for the shiny application. Also has our www subfolder that holds a bootsrap.css file that create the style of our app.
+
+#### Data Description
+##### Our data looks at the way disease affects different countries accross the world. The two main variables are the number of deaths due to disease and the death rate per 100,000. The latter is a standard way of normalizing the number of deaths to be able to accurately compare and scale the effect disease has on each country despite size differences. This data is an accumulation of data from 1975-2010.
+
+###Project WebApp Link
+[WorldDiseasePopulationData](https://nathanriojas.shinyapps.io/WorldDiseasePopulationData)
+
+
+#### The following code is the code from the files in our project
+###ETL code 
+
+
+
+
+```{r warning = FALSE}
+source("../00 Doc/Rprofile.R", echo = TRUE)
+source("../01 Data/Death_dataframes.R", echo = TRUE)
+```{r}
