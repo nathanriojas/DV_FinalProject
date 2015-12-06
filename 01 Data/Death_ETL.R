@@ -1,15 +1,15 @@
-setwd("C:/Users/Nathan R/Documents/DataVisualization/Final Project/01 Data/CSVs")
-# Note that profit and revenue is in millios
-file_path <- "Fortune 500 Companies.csv"
+setwd("C:/Users/Nathan R/Documents/DataVisualization/Project 4/01 Data/CSVs")
+
+file_path <- "Effect of Disease Country Pop.csv"
 
 df <- read.csv(file_path, stringsAsFactors = FALSE)
 
 #Replace "." (i.e., period) with "_" in the column names.
 names(df) <- gsub("\\.+", "_", names(df))
 
-#str(df) # Uncomment this and  run just the lines to here to get column types to use for getting the list of measures.
+str(df) # Uncomment this and  run just the lines to here to get column types to use for getting the list of measures.
 
-measures <- c("Year_", "Rank_","Revenue","Profit")
+measures <- c("Year","Number of Deaths", "Death Rate Per 100,000")
 #measures <- NA # Do this if there are no measures.
 
 #Get rid of special characters in each column.
@@ -36,7 +36,7 @@ library(lubridate)
 
 
 #The following is an example of dealing with special cases like making state abbreviations be all upper case.
-df["State"] <- data.frame(lapply(df["State"], toupper))
+#df["State"] <- data.frame(lapply(df["State"], toupper))
 
 #Get rid of all characters in measures except for numbers, the - sign, and period.dimensions
 if( length(measures) > 1 || ! is.na(measures)) {

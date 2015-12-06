@@ -2,23 +2,22 @@ require(tidyr)
 require(dplyr)
 require(ggplot2)
 
+setwd("C:/Users/Nathan R/Documents/DataVisualization/Project 4/01 Data/CSVs")
 
-setwd("C:/Users/Nathan R/Documents/DataVisualization/Final Project/01 Data/CSVs")
-
-file_path <- "Country_Pop_1980_2010.csv"
+file_path <- "GDP.csv"
 
 df <- read.csv(file_path, stringsAsFactors = FALSE)
 
-#Replace "." (i.e., period) with "_" in the column names.
+# Replace "." (i.e., period) with "_" in the column names.
 names(df) <- gsub("\\.+", "_", names(df))
 
-#str(df) # Uncomment this and  run just the lines to here to get column types to use for getting the list of measures.
+# str(df) # Uncomment this and  run just the lines to here to get column types to use for getting the list of measures.
 
-measures <- c("Year","United_States","World")
+measures <- c("Total GDP")
 #measures <- NA # Do this if there are no measures.
 
-#Get rid of special characters in each column.
-#Google ASCII Table to understand the following:
+# Get rid of special characters in each column.
+# Google ASCII Table to understand the following:
 for(n in names(df)) {
   df[n] <- data.frame(lapply(df[n], gsub, pattern="[^ -~]",replacement= ""))
 }
@@ -36,15 +35,15 @@ if( length(measures) > 1 || ! is.na(dimensions)) {
 }
 
 library(lubridate)
-#Fix date columns, this needs to be done by hand because | needs to be correct.
-#                                                  \_/
+# Fix date columns, this needs to be done by hand because | needs to be correct.
+#                                                        \_/
+df$Order_Date <- gsub(" [0-9]+:.*", "", gsub(" UTC", "", mdy(as.character(df$Order_Date), tz="UTC")))
+df$Ship_Date  <- gsub(" [0-9]+:.*", "", gsub(" UTC", "", mdy(as.character(df$Ship_Date),  tz="UTC")))
 
+# The following is an example of dealing with special cases like making state abbreviations be all upper case.
+# df["State"] <- data.frame(lapply(df["State"], toupper))
 
-
-#The following is an example of dealing with special cases like making state abbreviations be all upper case.
-#df["State"] <- data.frame(lapply(df["State"], toupper))
-
-#Get rid of all characters in measures except for numbers, the - sign, and period.dimensions
+# Get rid of all characters in measures except for numbers, the - sign, and period.dimensions
 if( length(measures) > 1 || ! is.na(measures)) {
   for(m in measures) {
     df[m] <- data.frame(lapply(df[m], gsub, pattern="[^--.0-9]",replacement= ""))
@@ -68,4 +67,3 @@ if( length(measures) > 1 || ! is.na(measures)) {
 }
 sql <- paste(sql, ");")
 cat(sql)
-
