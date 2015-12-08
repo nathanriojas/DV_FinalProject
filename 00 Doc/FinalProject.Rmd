@@ -32,7 +32,7 @@ output: html_document
 ##### Our data looks at the way disease affects different countries accross the world. The two main variables are the number of deaths due to disease and the death rate per 100,000. The latter is a standard way of normalizing the number of deaths to be able to accurately compare and scale the effect disease has on each country despite size differences. This data is an accumulation of data from 1975-2010. We compare the countries' death and disease rates to GDP to see if there is a relationship.
 
 ###Project WebApp Link
-[WorldDiseasePopulationData](https://nathanriojas.shinyapps.io/WorldDiseasePopulationData)
+[Shiny Data Visualizations](https://nathanriojas.shinyapps.io/DVFinal)
 
 
 #Tableau Visuals
@@ -44,11 +44,13 @@ output: html_document
 
 ##Barchart 
 ###(start with a blue thing and a green thing) - also demonstrate Table Calculations, the Analytics Tab - Reference Lines, ID Sets, and Formatting
+###Compares the countries with their death rates per 100,000 separated by sex
 
 ![](../00 Doc/Bar Chart.png)
 
 ##Crosstabs 
 ###(start with two blue things and a green thing) - also demonstrates Key Performance Indicators (KPIs), Calculated Fields, Sets, Parameters, and Hierarchies
+###Shows the number of deaths, death rate and calculated death rate for different age groups and countries
 
 ![](../00 Doc/crosstab.png)
 
@@ -59,6 +61,7 @@ output: html_document
 
 ##Aggregated Measures Analysis 
 ###(start with a green thing) - also demonstrates Histograms, Dual-axis Plots and Show Me
+####each color represents an age group (youngest in the center) and the size represents the number of people that died proportionally to the others
 
 ![](../00 Doc/aggregated measures.png)
 
@@ -68,8 +71,11 @@ output: html_document
 
 ![](../00 Doc/map.png)
 
-##Aggregated Measures Analysis 
-###(start with a green thing) - also demonstrates Histograms, Dual-axis Plots and Show Me
+##Non-Aggregated Measures Analysis 
+###(start with a green thing) - also demonstrates Boxplots, Dates, and Pages
+###BoxPlot
+###Distribution of the data through the different quartile ranges, separated by sex
+
 
 ![](../00 Doc/non-aggregate measures.png)
 
