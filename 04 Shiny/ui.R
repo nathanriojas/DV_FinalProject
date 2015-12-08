@@ -72,6 +72,20 @@ mainPanel("3. Scatter Plot: This compares the number of deaths and death rate pe
            
            mainPanel(plotOutput("distPlot3")
            )        
-  )
-)
-))
+  ),
+navbarMenu(title = "Histogram",
+         tabPanel(title = "R",
+         sidebarPanel(
+           sliderInput("binsize1", "Binsize (In Millions):", 
+                       min = 5000, max = 500000,  value = 15000),
+           actionButton(inputId = "clicks4",  label = "Click me")
+         ),
+         
+         mainPanel(plotOutput("distPlot4")
+         )
+),
+        tabPanel(title = "Tableau",
+                 img(src='THist.png', align = "center"))
+
+
+))))
