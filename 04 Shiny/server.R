@@ -1,3 +1,4 @@
+
 # server.R
 require(jsonlite)
 require(RCurl)
@@ -24,8 +25,8 @@ summary(bar_df)
 
 shinyServer(function(input, output) {
   
-# Begin code for first plot (crosstab): use light and dark values to adjust the plot when it is run. We use SQL queries to generate this plot. Size of plot is adjustable.  
-
+  # Begin code for first plot (crosstab): use light and dark values to adjust the plot when it is run. We use SQL queries to generate this plot. Size of plot is adjustable.  
+  
   binsize <- reactive({input$binsize1})  
   KPI_Low_Max_value <- reactive({input$KPI1})     
   KPI_Medium_Max_value <- reactive({input$KPI2})
@@ -35,22 +36,22 @@ shinyServer(function(input, output) {
   observeEvent(input$dark, { rv$alpha <- 0.65})
   observeEvent(input$light,{txt$cl <-"Black"})
   observeEvent(input$dark, { txt$cl <-"navyblue"})
-
+  
   df1 <- eventReactive(input$clicks1, {data.frame(fromJSON(getURL(URLencode(gsub("\n", " ", 'skipper.cs.utexas.edu:5001/rest/native/?query=
-            "select AGE_GROUP, SEX, sum_death, sum_100, kpi as ratio, 
-                                                                                case
-                                                                                when kpi < "p1" then \\\'03 Low\\\'
-                                                                                when kpi < "p2" then \\\'02 Medium\\\'
-                                                                                else \\\'01 High\\\'
-                                                                                end kpi
-                                                                                from (select AGE_GROUP, SEX, 
-                                                                                sum(NUMBER_OF_DEATHS)/100000 as sum_death, sum(DEATH_RATE_PER_100_000)/1000000 as sum_100, 
-                                                                                (sum(NUMBER_OF_DEATHS) / (sum(DEATH_RATE_PER_100_000)/10)) as kpi
-                                                                                from DISEASE 
-                                                                                group by SEX, AGE_GROUP)
-                                                                                order by AGE_GROUP;"
-                                                                                ')), httpheader=c(DB='jdbc:oracle:thin:@sayonara.microlab.cs.utexas.edu:1521:orcl', USER='C##cs329e_nar784', PASS='orcl_nar784', 
-                                                                                                  MODE='native_mode', MODEL='model', returnDimensions = 'False', returnFor = 'JSON', p1=KPI_Low_Max_value(), p2=KPI_Medium_Max_value()), verbose = TRUE)))
+                                                                                 "select AGE_GROUP, SEX, sum_death, sum_100, kpi as ratio, 
+                                                                                 case
+                                                                                 when kpi < "p1" then \\\'03 Low\\\'
+                                                                                 when kpi < "p2" then \\\'02 Medium\\\'
+                                                                                 else \\\'01 High\\\'
+                                                                                 end kpi
+                                                                                 from (select AGE_GROUP, SEX, 
+                                                                                 sum(NUMBER_OF_DEATHS)/100000 as sum_death, sum(DEATH_RATE_PER_100_000)/1000000 as sum_100, 
+                                                                                 (sum(NUMBER_OF_DEATHS) / (sum(DEATH_RATE_PER_100_000)/10)) as kpi
+                                                                                 from DISEASE 
+                                                                                 group by SEX, AGE_GROUP)
+                                                                                 order by AGE_GROUP;"
+                                                                                 ')), httpheader=c(DB='jdbc:oracle:thin:@sayonara.microlab.cs.utexas.edu:1521:orcl', USER='C##cs329e_nar784', PASS='orcl_nar784', 
+                                                                                                   MODE='native_mode', MODEL='model', returnDimensions = 'False', returnFor = 'JSON', p1=KPI_Low_Max_value(), p2=KPI_Medium_Max_value()), verbose = TRUE)))
   })
   
   output$distPlot1 <- renderPlot(height=500, width=900,{             
@@ -101,7 +102,7 @@ shinyServer(function(input, output) {
   
   
   
-# Begin code for Second Tab (Bar Chart): Size of plot is adjustable. This code uses a dataframe generated with R instead of SQL queries.
+  # Begin code for Second Tab (Bar Chart): Size of plot is adjustable. This code uses a dataframe generated with R instead of SQL queries.
   
   
   
@@ -162,15 +163,15 @@ shinyServer(function(input, output) {
   observeEvent(input$clicks2, {
     print(as.numeric(input$clicks2))
   })
- 
-  
-   
-# Begin code for Third Tab (Scatter Plot): Size of plot is adjustable. This code uses a dataframe generated with R instead of SQL queries.
- 
   
   
-   
-df3 <- eventReactive(input$clicks3, {death_df  })
+  
+  # Begin code for Third Tab (Scatter Plot): Size of plot is adjustable. This code uses a dataframe generated with R instead of SQL queries.
+  
+  
+  
+  
+  df3 <- eventReactive(input$clicks3, {death_df  })
   
   output$distPlot3 <- renderPlot({
     plot3 <- ggplot() + 
@@ -202,7 +203,7 @@ df3 <- eventReactive(input$clicks3, {death_df  })
   
   # Begin code for Fourth Tab (Histogram Plot): Size of plot is adjustable. This code uses a dataframe generated with R instead of SQL queries. 
   
-
+  
   df4 <- eventReactive(input$clicks4, {fortune  })
   
   output$distPlot4 <- renderPlot(height=550, width=550,{
