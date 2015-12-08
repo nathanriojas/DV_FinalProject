@@ -35,6 +35,47 @@ output: html_document
 [WorldDiseasePopulationData](https://nathanriojas.shinyapps.io/WorldDiseasePopulationData)
 
 
+#Tableau Visuals
+
+
+##Scatter Plot 
+###(start with 2 green things) -also demonstrates Maps, Actions, Dashboards, and the Analytics Tab - Models and Forecasting
+![](../00 Doc/Scatter Plot.png)
+
+##Barchart 
+###(start with a blue thing and a green thing) - also demonstrate Table Calculations, the Analytics Tab - Reference Lines, ID Sets, and Formatting
+
+![](../00 Doc/Bar Chart.png)
+
+##Crosstabs 
+###(start with two blue things and a green thing) - also demonstrates Key Performance Indicators (KPIs), Calculated Fields, Sets, Parameters, and Hierarchies
+
+![](../00 Doc/crosstab.png)
+
+##Data Blending
+###joining data together
+
+![](../00 Doc/blending.png)
+
+##Aggregated Measures Analysis 
+###(start with a green thing) - also demonstrates Histograms, Dual-axis Plots and Show Me
+
+![](../00 Doc/aggregated measures.png)
+
+##Map
+###(start with a green thing [measure] and a blue thing [dimension] under show me click filled maps)
+
+![](../00 Doc/map.png)
+
+##Aggregated Measures Analysis 
+###(start with a green thing) - also demonstrates Histograms, Dual-axis Plots and Show Me
+
+![](../00 Doc/non-aggregate measures.png)
+
+
+
+
+
 #### The following code is the code from the files in our project
 ###ETL code 
 
